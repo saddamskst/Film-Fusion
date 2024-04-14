@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sign Up | Film Fusion | Developed by Md Saddam</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  
+	
+	<link rel="icon" type="image/png" href="/static/img/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+
+
+	
+	<div class="limiter">
+		<div class="container-login100">
+
+			<div class="wrap-login100">
+
+				{% for message in messages %}
+				<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+				<strong>Alert !</strong> {{message}}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+				{% endfor %}
+				<div class="container" >
+					<span class="login100-form-title">
+						Sign Up 
+					</span>
+				</div>
+				
+				<div class="login100-pic js-tilt" data-tilt>
+					
+					<img src="/static/img/login-img.png" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form"  action="signup" method="POST">
+					
+					{% csrf_token %}
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: example@skst.in">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid Name is required">
+						<input class="input100" type="text" name="name" placeholder="Name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" id="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+							
+
+						</span>
+						<i class="bi bi-eye-slash toggle-password-icon" id="togglePassword"></i>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="Cpass" id="password" placeholder="Confirm Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					
+					</div>
+
+					
+					<div class="container-login100-form-btn">
+
+						<input type="submit" name="submit" value="Sign Up" class="login100-form-btn">
+						<!-- <button class="login100-form-btn">Signup</button> -->
+					</div>
+
+					
+
+					<div class="text-center p-t-36">
+						<a class="txt2" href="/login">
+							Already Have a Account Login
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			
+
+
+
+			</div>
+		</div>
+	</div>
+	
+	
+
+		
+	<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+	<script>
+		////Contact us Page
+
+const inputs = document.querySelectorAll(".input");
+
+function focusFunc() {
+  let parent = this.parentNode;
+  parent.classList.add("focus");
+}
+
+function blurFunc() {
+  let parent = this.parentNode;
+  if (this.value == "") {
+    parent.classList.remove("focus");
+  }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", focusFunc);
+  input.addEventListener("blur", blurFunc);
+});
+	</script>
+
+</body>
+</html>
