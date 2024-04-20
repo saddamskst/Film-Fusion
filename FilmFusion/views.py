@@ -32,8 +32,8 @@ def contact(request):
 			x.save()
 			return redirect('/')
 		else:
-			return redirect('/contact')
-			
+			#return redirect('contact')
+			return render(request,'contact.html')
 	       
 	except Exception as e:
 		return HttpResponse(e)

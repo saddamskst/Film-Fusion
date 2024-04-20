@@ -457,15 +457,19 @@ textarea.input {
           <span class="circle one"></span>
           <span class="circle two"></span>
 
-          <form action="contact"  method="POST" autocomplete="off" >
-
+          <form id="myForm"  method="POST" autocomplete="off" >
+            <!-- action="contact" action="https://api.web3forms.com/submit" -->
             {% csrf_token %}
+
+
+            <!-- Replace with your Access Key -->
+            <input type="hidden" name="access_key" value="787d65c5-f45a-4066-9459-29ab7056631c">
 
             <h3 class="title">Contact us</h3>
             <div class="input-container">
               <input type="text" name="name" class="input" />
-              <label for="">Username</label>
-              <span>Username</span>
+              <label for="">Name</label>
+              <span>Name</span>
             </div>
             <div class="input-container">
               <input type="email" name="email" class="input" />
@@ -487,6 +491,39 @@ textarea.input {
         </div>
       </div>
     </div>
+
+    <script>
+      document.getElementById("myForm").addEventListener("submit", function(event) {
+          event.preventDefault();
+  
+          // Action 1: Submit form to the first URL
+          fetch("/contact", {
+              method: "POST",
+              body: new FormData(this),
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+          })
+          .catch(error => {
+              console.error("Error:", error);
+          });
+  
+          // Action 2: Submit form to the second URL
+          fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              body: new FormData(this),
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+          })
+          .catch(error => {
+              console.error("Error:", error);
+          });
+      });
+  </script>
+
 <script>
   const inputs = document.querySelectorAll(".input");
 
